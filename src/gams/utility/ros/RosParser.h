@@ -59,6 +59,7 @@
 #endif
 
 #include <string>
+#include <regex>
 #include <iostream>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -79,6 +80,15 @@ namespace gams
   {
     namespace ros
     {
+      static std::string cleanCapnpName(const std::string& full_name)
+      {
+        std::regex re("[^\\/:]+");
+        std::sregex_token_iterator begin(full_name.begin(), full_name.end(), re), end;
+        std::vector<std::string> tokens;
+        std::copy(begin, end, std::back_inserter(tokens));
+        return tokens.back();
+      }
+
       class RosParser
       {
         public:
@@ -185,6 +195,7 @@ namespace gams
           template <class T>
           void parse_int_array (std::vector<T> *array,
             containers::NativeIntegerVector *target);
+
 
         protected:
           // ros introspection parser for unknown types

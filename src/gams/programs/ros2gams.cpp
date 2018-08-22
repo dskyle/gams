@@ -111,6 +111,7 @@ bool same_file = false;
 // Delete existing files
 bool delete_existing = false;
 
+size_t bag_start_time = 0;
 
 //Function definitions
 void delete_existing_file(std::string path, bool delete_existing);
@@ -259,7 +260,6 @@ int main (int argc, char ** argv)
   std::map<std::string, int> circular_variables;
   std::map<std::string, std::map<std::string, std::string>> name_substitution_map;
 
-
   // Use mapfile to filter topics
   if (map_file != "")
   {
@@ -312,7 +312,8 @@ int main (int argc, char ** argv)
           it!=config["schema_map"].end(); ++it)
       {
         std::string ros_type = it->first.as<std::string>();
-        std::string schema_name = it->second.as<std::string>();
+        std::string schema_name = 
+          gams::utility::ros::cleanCapnpName(it->second.as<std::string>());
         schema_map[ros_type] = schema_name;
       }
     }
@@ -395,6 +396,10 @@ int main (int argc, char ** argv)
   {
     parser.load_capn_schema(madara::utility::expand_envs(path));
   }
+
+  // Set the start time of the bag
+  bag_start_time = view.getBeginTime().toNSec();
+  kb.set ("log_start_time", (Integer) bag_start_time, madara::knowledge::EvalSettings::DELAY);
 
   // Iterate the messages
   settings.initial_lamport_clock = 0;

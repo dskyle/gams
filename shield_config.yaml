@@ -1,0 +1,149 @@
+frames:
+  base_frame: p1/base_link
+  world_frame: geo
+
+topics:
+  mavros/local/pose:
+    name: state_estimation.px4.location
+    circular_buffer_size: 5000
+  slam_out_pose:
+    name: state_estimation.slam.location
+    circular_buffer_size: 5000
+  first:
+    name: sensors.lidar.first
+    circular_buffer_size: 5000
+  last:
+    name: sensors.lidar.last
+    circular_buffer_size: 5000
+  gps/fix:
+    name: sensors.gps.location
+    circular_buffer_size: 5000
+  mavros/distance_sensor/bottom_laser:
+    name: sensors.altitude
+    circular_buffer_size: 5000
+  mavros/distance_sensor/top_sonar:
+    name: sensors.sonar.top
+    circular_buffer_size: 5000
+  mavros/distance_sensor/bottom_sonar:
+    name: sensors.sonar.bottom
+    circular_buffer_size: 5000
+  imu/data_raw:
+    name: sensors.imu
+    circular_buffer_size: 5000
+  msckf/prop/odom:
+    name: state_estimation.msckf.location
+    circular_buffer_size: 5000
+  msckf/navsol:
+    name: state_estimation.msckf.navsol
+    circular_buffer_size: 5000
+
+capnp_schemas:
+  - $(GAMS_ROOT)/tests/capnfiles/AHRS.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/AttitudeTarget.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/BatteryState.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/BeelinerInfo.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Bool.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/CameraInfo.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/ClonePoses.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/ColorRGBA.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/CompressedImage.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/CompressedOccupancyGrid.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/CompressedOccupancyGridUpdate.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Cpu.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/DeltaPose2D.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Detection.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/DetectionsStamped.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/DiagnosticArray.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/DiagnosticStatus.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Disk.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/EntranceDetection.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Environment.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/ExploreActionGoal.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/ExploreGoal.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/ExtendedState.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/FluidPressure.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/GoalID.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/GoalPathDefinition.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/GoalStatusArray.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/GoalStatus.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/GotoActionGoal.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/GotoGoal.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/GPSVelocity.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Header.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Illuminance.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/ImageMetadata.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Imu.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Int32.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/KeyValue.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/LaserEcho.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/LaserScan.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/LctoMetric.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Log.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/MagneticField.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/MapMetaData.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/MarkerArray.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Marker.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Mavlink.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/MeasurementMetadata.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/MultiEchoLaserScan.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/NavSatFix.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/NavSatStatus.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/navsol.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Net.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/OccupancyGrid.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/OccupancyGridUpdate.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Odometry.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Path.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Point32.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Point.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PointCloud2.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PointDefinition.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PointField.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PointStamped.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Polygon.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PolygonStamped.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Pose.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PoseStamped.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PoseWithCovariance.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PositionTarget.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/PositionTargetList.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Process.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Quaternion.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/RadioMetrics.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Range.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/RCOut.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/RegionOfInterest.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/SF20Info.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/SmartEnvironment.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/State.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/String.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/SysStats.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/SystemCommand.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Temperature.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TerrainBounds.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TerrainHeight.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TFMessage.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Thread.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TimeReference.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TrajectoryInfo.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Transform.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TransformStamped.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Twist.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TwistStamped.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/TwistWithCovariance.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/UpdateResiduals.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/UVIDList.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Vector3.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/WallFollowActionGoal.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/WallFollowGoal.capnp.bin
+  - $(GAMS_ROOT)/tests/capnfiles/Wifi.capnp.bin
+
+schema_map:
+  nav_msgs/Odometry: tests/capnfiles/Odometry.capnp:Odometry
+  geometry_msgs/Point: tests/capnfiles/Point.capnp:Point
+  geometry_msgs/PoseStamped: tests/capnfiles/PoseStamped.capnp:PoseStamped
+  sensor_msgs/LaserScan: tests/capnfiles/LaserScan.capnp:LaserScan
+  sensor_msgs/NavSatFix: tests/capnfiles/NavSatFix.capnp:NavSatFix
+  sensor_msgs/Range: tests/capnfiles/Range.capnp:Range
+  sensor_msgs/Imu: tests/capnfiles/Imu.capnp:Imu
+  msckf_pkg/navsol: tests/capnfiles/navsol.capnp:Navsol
