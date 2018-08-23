@@ -36,6 +36,31 @@ topics:
   msckf/navsol:
     name: state_estimation.msckf.navsol
     circular_buffer_size: 5000
+  camera/image_raw/compressed:
+    name: sensors.image_raw.compressed
+    circular_buffer_size: 1000
+  imu/baro:
+    name: sensors.bag
+    circular_buffer_size: 2000
+  mavros/distance_sensor/bottom_laser:
+    name: sensors.bottomLaser
+    circular_buffer_size: 500
+  mavros/distance_sensor/bottom_sonar:
+    name: sensors.bottomSonar
+    circular_buffer_size: 500
+  mavros/distance_sensor/forward_downward_sonar:
+    name: sensors.forwardDownwardSonar
+    circular_buffer_size: 500
+  mavros/distance_sensor/forward_upward_sonar:
+    name: sensors.forwardUpwardSonar
+    circular_buffer_size: 500
+  ambient_light:
+    name: sensors.ambientLight
+    circular_buffer_size: 500
+  camera/camera_info:
+    name: sensors.image_raw.camera_info
+    circular_buffer_size: 1000
+
 
 capnp_schemas:
   - $(GAMS_ROOT)/tests/capnfiles/AHRS.capnp.bin
@@ -147,3 +172,7 @@ schema_map:
   sensor_msgs/Range: tests/capnfiles/Range.capnp:Range
   sensor_msgs/Imu: tests/capnfiles/Imu.capnp:Imu
   msckf_pkg/navsol: tests/capnfiles/navsol.capnp:Navsol
+  sensor_msgs/CameraInfo: CameraInfo 
+  sensor_msgs/CompressedImage: CompressedImage
+  sensor_msgs/FluidPressure: FluidPressure
+  sensor_msgs/Illuminance: Illuminance

@@ -19,14 +19,14 @@ struct Navsol {
    gyroBias @5: Vector3;
    velocityCov @6: Vector3;
    msckfTime @7: Float64;
-   zupting @8: Bool;
+   zupting @8: Int32;
    baroBias2Cov @9: List(Float64);
    latency @10: Float64;
    position @11: Vector3;
    clockRateError @12: Float64;
    gpsTimingCov @13: Float64;
    gyroSfe @14: Vector3;
-   gpsEnabled @15: Bool;
+   gpsEnabled @15: Int32;
    camQCov @16: Vector3;
    camTRow @17: Float64;
    rotCov @18: Vector3;

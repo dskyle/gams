@@ -10,7 +10,7 @@ $Cxx.namespace("gams::types");
 # Type definition
 struct RegionOfInterest {
    width @0: UInt32;
-   doRectify @1: Bool;
+   doRectify @1: Int32;
    yOffset @2: UInt32;
    xOffset @3: UInt32;
    height @4: UInt32;

@@ -805,6 +805,29 @@ void gams::utility::ros::RosParser::set_dyn_capnp_value(
     std::string struct_name = name.substr(0,struct_end);
     std::string var_name = name.substr(struct_end+1);
 
+    std::stringstream varCamelCase;
+    for (unsigned int i = 0; i < var_name.size(); i++)
+    {
+      if (var_name[i] == '_')
+      {
+        varCamelCase.put(toupper(var_name[i + 1]));
+        i++;
+      }
+      else
+      {
+        if ( i == 0 )
+        {
+          // first character has to be lowercase
+          varCamelCase.put(tolower(var_name[i]));
+        }
+        else
+        {
+          varCamelCase.put(var_name[i]);
+        }
+      }
+    }
+    var_name = varCamelCase.str();
+
     auto dynvalue = get_dyn_capnp_struct(builder, struct_name);
 
     std::size_t dot_pos = var_name.find(".");
@@ -816,6 +839,7 @@ void gams::utility::ros::RosParser::set_dyn_capnp_value(
       if (index == 0)
       {
         // First element so init
+        // std::cout << "Initing array for " << name << " varname: " << var_name << std::endl;
         dynvalue.init(var, array_size);
       }
       auto lst = dynvalue.get(var).as<capnp::DynamicList>();
@@ -923,8 +947,10 @@ void gams::utility::ros::RosParser::parse_any ( std::string datatype,
     catch ( const std::exception& e )
     {
       // Value is NAN if it is not readable
+      // std::cerr << "Not readable" << std::endl;
     }
     name = substitute_name(datatype, name);
+    // std::cerr << "Saving name: " << name << " = " << val << std::endl;
     set_dyn_capnp_value<double>(capnp_builder, name, val, array_size);
     
   }
